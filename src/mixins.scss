@@ -196,10 +196,10 @@
     height: px($stroke-height);
   }
   &::before {
-    transform: translateX(px($stroke-width*1.5));
+    transform: translateX(px($stroke-width*1.75));
   }
   &::after {
-    transform: translateX(px(-$stroke-width*1.5));
+    transform: translateX(px(-$stroke-width*1.75));
   }
 }
 
