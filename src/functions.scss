@@ -1,0 +1,29 @@
+/// Convert one unit into another, @author Hugo Giraudel
+@function convert-unit($value, $unit) {
+  $units: ('px': 0px,'cm': 0cm,'mm': 0mm,'%': 0%,'ch': 0ch,'in': 0in,'em': 0em,'rem': 0rem,'pt': 0pt,'pc': 0pc,'ex': 0ex,'vw': 0vw,'vh': 0vh,'vmin': 0vmin,'vmax': 0vmax,'deg': 0deg,'turn': 0turn,'rad': 0rad,'grad': 0grad,'s': 0s,'ms': 0ms,'Hz': 0Hz,'kHz': 0kHz,'dppx': 0dppx,'dpcm': 0dpcm,'dpi': 0dpi);
+  @if map-has-key($units, $unit) {
+    @return map-get($units, $unit) + $value;
+  }
+  @error "Unknown unit `#{$unit}`.";
+}
+
+/// Convert integer to pixels
+@function px($int) {
+  @return convert-unit($int, "px");
+}
+
+/// Convert integer to degrees
+@function deg($int) {
+  @return convert-unit($int, "deg");
+}
+
+/// Compute side length of square that bounds a rectangle rotated 45 degrees
+@function rotated-length($height, $width) {
+  @return ($width / $_sqrt-2) + ($height / $_sqrt-2);
+}
+
+/// Compute difference between the top of the rectangle standing upright
+/// and top of bounded square formed when that rectangle is rotated 45 degrees
+@function rotated-height-diff($height, $width) {
+  @return ($height - rotated-length($height, $width)) / 2;
+}

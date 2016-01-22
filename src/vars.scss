@@ -1,0 +1,13 @@
+/* DEFAULTS */
+$stroke-width:          3;
+$height-multiplier:     6;
+$stroke-radius:         4;
+$stroke-color:          rgba(51, 122, 183, .75);
+$parent-height:         90;
+$transition-duration:   0.33s;
+$transition-ease:       linear;
+
+/* DON'T CHANGE */
+$_sqrt-2:               1.41421;
+$_rotate-delta:         45deg;
+$_dirs:                 ('up', 'down', 'left', 'right');

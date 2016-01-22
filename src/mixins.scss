@@ -1,0 +1,205 @@
+// Handle 3rd line stroke
+@mixin hide-center-stroke {
+  & {
+    background-color: transparent !important;
+    @content;
+  }
+}
+@mixin show-center-stroke($stroke-color) {
+  & {
+    background-color: $stroke-color !important;
+    @content;
+  }
+}
+
+// 1 stroke icons
+@mixin minus($stroke-height) {
+  @include show-center-stroke($stroke-color) {
+    transform: rotate(deg(90));
+  }
+  &::before,
+  &::after {
+    height: px($stroke-height);
+  }
+  &::before {
+    transform: rotate(0);
+  }
+  &::after {
+    transform: rotate(0);
+  }
+}
+
+// 2 stroke icons
+@mixin check($stroke-height, $mini-height, $stroke-width, $x-mid-delta) {
+  $x-delta: (($mini-height - $stroke-width) / 2);
+  $y-delta: $stroke-height - $stroke-width - (
+    (rotated-length($mini-height, $stroke-width)
+     - ($stroke-width / $_sqrt-2)
+    * 2)
+    / $_sqrt-2
+  );
+
+  @include show-center-stroke($stroke-color) { transform: translate(px($x-mid-delta), 0) rotate($_rotate-delta); }
+  &::before {
+    height: px($stroke-height);
+    transform: translate(0, 0) rotate(0);
+  }
+  &::after {
+    height: px($mini-height);
+    transform: translate(px(-$x-delta), px($y-delta)) rotate(deg(90));
+  }
+}
+
+@mixin chevron($dir, $stroke-height, $stroke-width, $x-mid-delta) {
+  $rotate-forward:  rotate($_rotate-delta);
+  $rotate-back:     rotate(-$_rotate-delta);
+  $rotate-90:       rotate(deg(90));
+  $x-delta:         (($stroke-height - $stroke-width) / 2);
+
+  &::before,
+  &::after {
+    height: px($stroke-height);
+  }
+  &::after {
+    transform: translate(0, 0) rotate(0);
+  }
+
+  @if $dir=='down' {
+    @include show-center-stroke($stroke-color) {
+      transform: translate(px($x-mid-delta), 0) $rotate-forward;
+    }
+    &::before {
+      transform: translate(px(-$x-delta), px($x-delta)) $rotate-90;
+    }
+  } @else if $dir=='up' {
+    @include show-center-stroke($stroke-color) {
+      transform: translate(px(-$x-mid-delta), 0) $rotate-forward
+    }
+    &::before {
+      transform: translate(px($x-delta), px(-$x-delta)) $rotate-90;
+    }
+  } @else if $dir=='left' {
+    @include show-center-stroke($stroke-color) {
+      transform: translate(0, px(-$x-mid-delta)) $rotate-forward;
+    }
+    &::before {
+      transform: translate(px($x-delta), px($x-delta)) $rotate-90;
+    }
+  } @else if $dir=='right' {
+    @include show-center-stroke($stroke-color) {
+      transform: translate(0, px($x-mid-delta)) $rotate-forward;
+    }
+    &::before {
+      transform: translate(px(-$x-delta), px(-$x-delta)) $rotate-90;
+    }
+  }
+}
+
+@mixin close($stroke-height) {
+  @include show-center-stroke($stroke-color) {
+    transform: rotate($_rotate-delta);
+  }
+  &::before,
+  &::after {
+    height: px($stroke-height);
+  }
+  &::before {
+    transform: rotate(deg(90));
+  }
+  &::after {
+    transform: rotate(0);
+  }
+}
+
+@mixin plus($stroke-height) {
+  @include show-center-stroke($stroke-color) {
+    transform: rotate(0);
+  }
+  &::before,
+  &::after {
+    height: px($stroke-height);
+  }
+  &::before {
+    transform: rotate(0);
+  }
+  &::after {
+    transform: rotate(deg(90));
+  }
+}
+
+// 3 stroke icons
+@mixin arrow($dir, $stroke-height, $mini-height, $mini-square, $stroke-square) {
+  $rotate-forward:  rotate($_rotate-delta);
+  $rotate-back:     rotate(-$_rotate-delta);
+  $x-delta:         (($stroke-square - $mini-square) / 2);
+  $y-delta:         ($mini-height / 5);
+
+  &::before,
+  &::after {
+    height: px($mini-height);
+  }
+
+  @if index(('up', 'down'), $dir) {
+    @include show-center-stroke($stroke-color) {
+      transform: rotate(0);
+    }
+  } @else if index(('right', 'left'), $dir) {
+    @include show-center-stroke($stroke-color) {
+      transform: rotate(deg(90));
+    }
+  }
+
+  @if index(('up', 'right'), $dir) {
+    &::before {
+      transform: translate(px(-$x-delta),px(-$y-delta)) $rotate-forward;
+    }
+    &::after {
+      transform: translate(px($x-delta),px(-$y-delta)) $rotate-back;
+    }
+  } @else if index(('down', 'left'), $dir) {
+    $y-delta: ($y-delta + ($stroke-height - $mini-height));
+    &::before {
+      transform: translate(px(-$x-delta), px($y-delta)) $rotate-back;
+    }
+    &::after {
+      transform: translate(px($x-delta), px($y-delta)) $rotate-forward;
+    }
+  }
+}
+
+@mixin asterisk($stroke-height) {
+  @include show-center-stroke($stroke-color) {
+    transform: rotate(0);
+  }
+  &::before,
+  &::after {
+    height: px($stroke-height);
+  }
+  &::before {
+    transform: rotate(deg(60));
+  }
+  &::after {
+    transform: rotate(deg(-60));
+  }
+}
+
+@mixin bars($stroke-height, $stroke-width) {
+  @include show-center-stroke($stroke-color) {
+    $rotated-rect-diff:   ((($stroke-width * 4) - $stroke-height) / 2);
+    $y-delta:             (($parent-height - ($stroke-width * 4)) / 2);
+    /* margin-right: px($stroke-width*1.5 - $rotated-rect-diff); */
+    margin-top: px($rotated-rect-diff + $y-delta);
+    transform: rotate(deg(90));
+  }
+  &::before,
+  &::after {
+    height: px($stroke-height);
+  }
+  &::before {
+    transform: translateX(px($stroke-width*1.5));
+  }
+  &::after {
+    transform: translateX(px(-$stroke-width*1.5));
+  }
+}
+
