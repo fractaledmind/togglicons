@@ -12,62 +12,68 @@
   $mini-square:     rotated-length($stroke-width, $mini-height);
   $x-mid-delta:     ($_sqrt-2 * ($stroke-height - $stroke-width) / 4);
 
-  input.togglicon {
-    // requires parent to have relative pos
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
+  .togglicon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
     width: 100%;
     height: 100%;
-    cursor: pointer;
-    opacity: 0;
 
-    & ~ i {
+    input {
       position: absolute;
+      z-index: 1;
       top: 0;
-      right: 0;
-      margin-top: px(($parent-height - $stroke-height) / 2);
-      margin-right: px(($parent-height - $stroke-width) / 2);
-      // DEV
-      // &::before { background-color: rgba(92, 184, 92, .75) !important; }
-      // &::after { background-color: rgba(217, 83, 79, .75) !important; }
-      &, &::before, &::after {
-        // needed to have height and width actually matter
-        position: absolute;
-        content: "";
-        width: px($stroke-width);
-        height: px($stroke-height);
-        border-radius: px($stroke-radius);
-        transition: all $transition-duration $transition-ease;
-        background-color: $stroke-color;
-      }
-    }
+      left: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      cursor: pointer;
+      opacity: 0;
 
-    &:checked {
+      & ~ i {
+        position: relative;
+        max-width: 50%;
+        &, &::before, &::after {
+          // needed to have height and width actually matter
+          width: px($stroke-width);
+          height: px($stroke-height);
+          border-radius: px($stroke-radius);
+          transition: all $transition-duration $transition-ease;
+          background-color: $stroke-color;
+        }
+        &::before, &::after {
+          // needed to have height and width actually matter
+          position: absolute;
+          content: "";
+        }
+      }
+
+      &:checked {
+        @each $dir in $_dirs {
+          & ~ i.arrow-#{$dir}-checked   { @include arrow($dir, $stroke-height, $mini-height, $mini-square, $stroke-square); }
+          & ~ i.chevron-#{$dir}-checked { @include chevron($dir, $stroke-height, $stroke-width, $x-mid-delta); }
+        }
+        & ~ i.plus-checked      { @include plus($stroke-height); }
+        & ~ i.minus-checked     { @include minus($stroke-height); }
+        & ~ i.close-checked     { @include close($stroke-height); }
+        & ~ i.asterisk-checked  { @include asterisk($stroke-height); }
+        & ~ i.check-checked     { @include check($stroke-height, $mini-height, $stroke-width, $x-mid-delta); }
+        & ~ i.bars-checked      { @include bars($stroke-height, $stroke-width); }
+      }
+
       @each $dir in $_dirs {
-        & ~ i.arrow-#{$dir}-checked   { @include arrow($dir, $stroke-height, $mini-height, $mini-square, $stroke-square); }
-        & ~ i.chevron-#{$dir}-checked { @include chevron($dir, $stroke-height, $stroke-width, $x-mid-delta); }
+        & ~ i.arrow-#{$dir}   { @include arrow($dir, $stroke-height, $mini-height, $mini-square, $stroke-square); }
+        & ~ i.chevron-#{$dir} { @include chevron($dir, $stroke-height, $stroke-width, $x-mid-delta); }
       }
-      & ~ i.plus-checked      { @include plus($stroke-height); }
-      & ~ i.minus-checked     { @include minus($stroke-height); }
-      & ~ i.close-checked     { @include close($stroke-height); }
-      & ~ i.asterisk-checked  { @include asterisk($stroke-height); }
-      & ~ i.check-checked     { @include check($stroke-height, $mini-height, $stroke-width, $x-mid-delta); }
-      & ~ i.bars-checked      { @include bars($stroke-height, $stroke-width); }
-    }
+      & ~ i.plus      { @include plus($stroke-height); }
+      & ~ i.minus     { @include minus($stroke-height); }
+      & ~ i.close     { @include close($stroke-height); }
+      & ~ i.asterisk  { @include asterisk($stroke-height); }
+      & ~ i.check     { @include check($stroke-height, $mini-height, $stroke-width, $x-mid-delta); }
+      & ~ i.bars      { @include bars($stroke-height, $stroke-width); }
 
-    @each $dir in $_dirs {
-      & ~ i.arrow-#{$dir}   { @include arrow($dir, $stroke-height, $mini-height, $mini-square, $stroke-square); }
-      & ~ i.chevron-#{$dir} { @include chevron($dir, $stroke-height, $stroke-width, $x-mid-delta); }
+      @content;
     }
-    & ~ i.plus      { @include plus($stroke-height); }
-    & ~ i.minus     { @include minus($stroke-height); }
-    & ~ i.close     { @include close($stroke-height); }
-    & ~ i.asterisk  { @include asterisk($stroke-height); }
-    & ~ i.check     { @include check($stroke-height, $mini-height, $stroke-width, $x-mid-delta); }
-    & ~ i.bars      { @include bars($stroke-height, $stroke-width); }
-
-    @content;
   }
 }
