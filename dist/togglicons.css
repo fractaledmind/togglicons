@@ -1,477 +1,492 @@
-input.togglicon {
+.togglicon {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.togglicon input {
   position: absolute;
   z-index: 1;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  margin: 0;
   cursor: pointer;
   opacity: 0;
 }
-input.togglicon ~ i {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin-top: 29px;
-  margin-right: 43px;
+.togglicon input ~ i {
+  position: relative;
+  max-width: 50%;
 }
-input.togglicon ~ i, input.togglicon ~ i::before, input.togglicon ~ i::after {
-  position: absolute;
-  content: "";
-  width: 4px;
-  height: 32px;
-  border-radius: 8px;
+.togglicon input ~ i, .togglicon input ~ i::before, .togglicon input ~ i::after {
+  width: 3px;
+  height: 18px;
+  border-radius: 4px;
   -webkit-transition: all 0.33s linear;
   transition: all 0.33s linear;
-  background-color: #65737e;
+  background-color: #343d46;
 }
-input.togglicon:checked ~ i.arrow-up-checked::before, input.togglicon:checked ~ i.arrow-up-checked::after {
-  height: 18px;
+.togglicon input ~ i::before, .togglicon input ~ i::after {
+  position: absolute;
+  content: "";
 }
-input.togglicon:checked ~ i.arrow-up-checked {
-  background-color: #65737e !important;
+.togglicon input:checked ~ i.arrow-up-checked::before, .togglicon input:checked ~ i.arrow-up-checked::after {
+  height: 10.5px;
+}
+.togglicon input:checked ~ i.arrow-up-checked {
   -webkit-transform: rotate(0);
           transform: rotate(0);
 }
-input.togglicon:checked ~ i.arrow-up-checked::before {
-  -webkit-transform: translate(-4.94976px, -3.6px) rotate(45deg);
-          transform: translate(-4.94976px, -3.6px) rotate(45deg);
+.togglicon input:checked ~ i.arrow-up-checked::before {
+  -webkit-transform: translate(-2.65165px, -2.1px) rotate(45deg);
+          transform: translate(-2.65165px, -2.1px) rotate(45deg);
 }
-input.togglicon:checked ~ i.arrow-up-checked::after {
-  -webkit-transform: translate(4.94976px, -3.6px) rotate(-45deg);
-          transform: translate(4.94976px, -3.6px) rotate(-45deg);
+.togglicon input:checked ~ i.arrow-up-checked::after {
+  -webkit-transform: translate(2.65165px, -2.1px) rotate(-45deg);
+          transform: translate(2.65165px, -2.1px) rotate(-45deg);
 }
-input.togglicon:checked ~ i.chevron-up-checked::before, input.togglicon:checked ~ i.chevron-up-checked::after {
-  height: 32px;
+.togglicon input:checked ~ i.chevron-up-checked::before, .togglicon input:checked ~ i.chevron-up-checked::after {
+  height: 18px;
 }
-input.togglicon:checked ~ i.chevron-up-checked::after {
+.togglicon input:checked ~ i.chevron-up-checked::after {
   -webkit-transform: translate(0, 0) rotate(0);
           transform: translate(0, 0) rotate(0);
 }
-input.togglicon:checked ~ i.chevron-up-checked {
-  background-color: #65737e !important;
-  -webkit-transform: translate(-9.89947px, 0) rotate(45deg);
-          transform: translate(-9.89947px, 0) rotate(45deg);
+.togglicon input:checked ~ i.chevron-up-checked {
+  -webkit-transform: translate(-5.3033px, 0) rotate(45deg);
+          transform: translate(-5.3033px, 0) rotate(45deg);
 }
-input.togglicon:checked ~ i.chevron-up-checked::before {
-  -webkit-transform: translate(14px, -14px) rotate(90deg);
-          transform: translate(14px, -14px) rotate(90deg);
+.togglicon input:checked ~ i.chevron-up-checked::before {
+  -webkit-transform: translate(7.5px, -7.5px) rotate(90deg);
+          transform: translate(7.5px, -7.5px) rotate(90deg);
 }
-input.togglicon:checked ~ i.arrow-down-checked::before, input.togglicon:checked ~ i.arrow-down-checked::after {
-  height: 18px;
+.togglicon input:checked ~ i.arrow-down-checked::before, .togglicon input:checked ~ i.arrow-down-checked::after {
+  height: 10.5px;
 }
-input.togglicon:checked ~ i.arrow-down-checked {
-  background-color: #65737e !important;
+.togglicon input:checked ~ i.arrow-down-checked {
   -webkit-transform: rotate(0);
           transform: rotate(0);
 }
-input.togglicon:checked ~ i.arrow-down-checked::before {
-  -webkit-transform: translate(-4.94976px, 17.6px) rotate(-45deg);
-          transform: translate(-4.94976px, 17.6px) rotate(-45deg);
+.togglicon input:checked ~ i.arrow-down-checked::before {
+  -webkit-transform: translate(-2.65165px, 9.6px) rotate(-45deg);
+          transform: translate(-2.65165px, 9.6px) rotate(-45deg);
 }
-input.togglicon:checked ~ i.arrow-down-checked::after {
-  -webkit-transform: translate(4.94976px, 17.6px) rotate(45deg);
-          transform: translate(4.94976px, 17.6px) rotate(45deg);
+.togglicon input:checked ~ i.arrow-down-checked::after {
+  -webkit-transform: translate(2.65165px, 9.6px) rotate(45deg);
+          transform: translate(2.65165px, 9.6px) rotate(45deg);
 }
-input.togglicon:checked ~ i.chevron-down-checked::before, input.togglicon:checked ~ i.chevron-down-checked::after {
-  height: 32px;
+.togglicon input:checked ~ i.chevron-down-checked::before, .togglicon input:checked ~ i.chevron-down-checked::after {
+  height: 18px;
 }
-input.togglicon:checked ~ i.chevron-down-checked::after {
+.togglicon input:checked ~ i.chevron-down-checked::after {
   -webkit-transform: translate(0, 0) rotate(0);
           transform: translate(0, 0) rotate(0);
 }
-input.togglicon:checked ~ i.chevron-down-checked {
-  background-color: #65737e !important;
-  -webkit-transform: translate(9.89947px, 0) rotate(45deg);
-          transform: translate(9.89947px, 0) rotate(45deg);
+.togglicon input:checked ~ i.chevron-down-checked {
+  -webkit-transform: translate(5.3033px, 0) rotate(45deg);
+          transform: translate(5.3033px, 0) rotate(45deg);
 }
-input.togglicon:checked ~ i.chevron-down-checked::before {
-  -webkit-transform: translate(-14px, 14px) rotate(90deg);
-          transform: translate(-14px, 14px) rotate(90deg);
+.togglicon input:checked ~ i.chevron-down-checked::before {
+  -webkit-transform: translate(-7.5px, 7.5px) rotate(90deg);
+          transform: translate(-7.5px, 7.5px) rotate(90deg);
 }
-input.togglicon:checked ~ i.arrow-left-checked::before, input.togglicon:checked ~ i.arrow-left-checked::after {
-  height: 18px;
+.togglicon input:checked ~ i.arrow-left-checked::before, .togglicon input:checked ~ i.arrow-left-checked::after {
+  height: 10.5px;
 }
-input.togglicon:checked ~ i.arrow-left-checked {
-  background-color: #65737e !important;
+.togglicon input:checked ~ i.arrow-left-checked {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
 }
-input.togglicon:checked ~ i.arrow-left-checked::before {
-  -webkit-transform: translate(-4.94976px, 17.6px) rotate(-45deg);
-          transform: translate(-4.94976px, 17.6px) rotate(-45deg);
+.togglicon input:checked ~ i.arrow-left-checked::before {
+  -webkit-transform: translate(-2.65165px, 9.6px) rotate(-45deg);
+          transform: translate(-2.65165px, 9.6px) rotate(-45deg);
 }
-input.togglicon:checked ~ i.arrow-left-checked::after {
-  -webkit-transform: translate(4.94976px, 17.6px) rotate(45deg);
-          transform: translate(4.94976px, 17.6px) rotate(45deg);
+.togglicon input:checked ~ i.arrow-left-checked::after {
+  -webkit-transform: translate(2.65165px, 9.6px) rotate(45deg);
+          transform: translate(2.65165px, 9.6px) rotate(45deg);
 }
-input.togglicon:checked ~ i.chevron-left-checked::before, input.togglicon:checked ~ i.chevron-left-checked::after {
-  height: 32px;
+.togglicon input:checked ~ i.chevron-left-checked::before, .togglicon input:checked ~ i.chevron-left-checked::after {
+  height: 18px;
 }
-input.togglicon:checked ~ i.chevron-left-checked::after {
+.togglicon input:checked ~ i.chevron-left-checked::after {
   -webkit-transform: translate(0, 0) rotate(0);
           transform: translate(0, 0) rotate(0);
 }
-input.togglicon:checked ~ i.chevron-left-checked {
-  background-color: #65737e !important;
-  -webkit-transform: translate(0, -9.89947px) rotate(45deg);
-          transform: translate(0, -9.89947px) rotate(45deg);
+.togglicon input:checked ~ i.chevron-left-checked {
+  -webkit-transform: translate(0, -5.3033px) rotate(45deg);
+          transform: translate(0, -5.3033px) rotate(45deg);
 }
-input.togglicon:checked ~ i.chevron-left-checked::before {
-  -webkit-transform: translate(14px, 14px) rotate(90deg);
-          transform: translate(14px, 14px) rotate(90deg);
+.togglicon input:checked ~ i.chevron-left-checked::before {
+  -webkit-transform: translate(7.5px, 7.5px) rotate(90deg);
+          transform: translate(7.5px, 7.5px) rotate(90deg);
 }
-input.togglicon:checked ~ i.arrow-right-checked::before, input.togglicon:checked ~ i.arrow-right-checked::after {
-  height: 18px;
+.togglicon input:checked ~ i.arrow-right-checked::before, .togglicon input:checked ~ i.arrow-right-checked::after {
+  height: 10.5px;
 }
-input.togglicon:checked ~ i.arrow-right-checked {
-  background-color: #65737e !important;
+.togglicon input:checked ~ i.arrow-right-checked {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
 }
-input.togglicon:checked ~ i.arrow-right-checked::before {
-  -webkit-transform: translate(-4.94976px, -3.6px) rotate(45deg);
-          transform: translate(-4.94976px, -3.6px) rotate(45deg);
+.togglicon input:checked ~ i.arrow-right-checked::before {
+  -webkit-transform: translate(-2.65165px, -2.1px) rotate(45deg);
+          transform: translate(-2.65165px, -2.1px) rotate(45deg);
 }
-input.togglicon:checked ~ i.arrow-right-checked::after {
-  -webkit-transform: translate(4.94976px, -3.6px) rotate(-45deg);
-          transform: translate(4.94976px, -3.6px) rotate(-45deg);
+.togglicon input:checked ~ i.arrow-right-checked::after {
+  -webkit-transform: translate(2.65165px, -2.1px) rotate(-45deg);
+          transform: translate(2.65165px, -2.1px) rotate(-45deg);
 }
-input.togglicon:checked ~ i.chevron-right-checked::before, input.togglicon:checked ~ i.chevron-right-checked::after {
-  height: 32px;
+.togglicon input:checked ~ i.chevron-right-checked::before, .togglicon input:checked ~ i.chevron-right-checked::after {
+  height: 18px;
 }
-input.togglicon:checked ~ i.chevron-right-checked::after {
+.togglicon input:checked ~ i.chevron-right-checked::after {
   -webkit-transform: translate(0, 0) rotate(0);
           transform: translate(0, 0) rotate(0);
 }
-input.togglicon:checked ~ i.chevron-right-checked {
-  background-color: #65737e !important;
-  -webkit-transform: translate(0, 9.89947px) rotate(45deg);
-          transform: translate(0, 9.89947px) rotate(45deg);
+.togglicon input:checked ~ i.chevron-right-checked {
+  -webkit-transform: translate(0, 5.3033px) rotate(45deg);
+          transform: translate(0, 5.3033px) rotate(45deg);
 }
-input.togglicon:checked ~ i.chevron-right-checked::before {
-  -webkit-transform: translate(-14px, -14px) rotate(90deg);
-          transform: translate(-14px, -14px) rotate(90deg);
+.togglicon input:checked ~ i.chevron-right-checked::before {
+  -webkit-transform: translate(-7.5px, -7.5px) rotate(90deg);
+          transform: translate(-7.5px, -7.5px) rotate(90deg);
 }
-input.togglicon:checked ~ i.plus-checked {
-  background-color: #65737e !important;
-  -webkit-transform: rotate(0);
-          transform: rotate(0);
-}
-input.togglicon:checked ~ i.plus-checked::before, input.togglicon:checked ~ i.plus-checked::after {
-  height: 32px;
-}
-input.togglicon:checked ~ i.plus-checked::before {
-  -webkit-transform: rotate(0);
-          transform: rotate(0);
-}
-input.togglicon:checked ~ i.plus-checked::after {
+.togglicon input:checked ~ i.minus-checked {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
 }
-input.togglicon:checked ~ i.minus-checked {
-  background-color: #65737e !important;
+.togglicon input:checked ~ i.minus-checked::before, .togglicon input:checked ~ i.minus-checked::after {
+  height: 18px;
+}
+.togglicon input:checked ~ i.minus-checked::before {
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+}
+.togglicon input:checked ~ i.minus-checked::after {
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+}
+.togglicon input:checked ~ i.bar-checked {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+.togglicon input:checked ~ i.bar-checked::before, .togglicon input:checked ~ i.bar-checked::after {
+  height: 18px;
+}
+.togglicon input:checked ~ i.bar-checked::before {
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+}
+.togglicon input:checked ~ i.bar-checked::after {
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+}
+.togglicon input:checked ~ i.plus-checked {
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+}
+.togglicon input:checked ~ i.plus-checked::before, .togglicon input:checked ~ i.plus-checked::after {
+  height: 18px;
+}
+.togglicon input:checked ~ i.plus-checked::before {
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+}
+.togglicon input:checked ~ i.plus-checked::after {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
 }
-input.togglicon:checked ~ i.minus-checked::before, input.togglicon:checked ~ i.minus-checked::after {
-  height: 32px;
-}
-input.togglicon:checked ~ i.minus-checked::before {
-  -webkit-transform: rotate(0);
-          transform: rotate(0);
-}
-input.togglicon:checked ~ i.minus-checked::after {
-  -webkit-transform: rotate(0);
-          transform: rotate(0);
-}
-input.togglicon:checked ~ i.close-checked {
-  background-color: #65737e !important;
+.togglicon input:checked ~ i.close-checked {
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
 }
-input.togglicon:checked ~ i.close-checked::before, input.togglicon:checked ~ i.close-checked::after {
-  height: 32px;
+.togglicon input:checked ~ i.close-checked::before, .togglicon input:checked ~ i.close-checked::after {
+  height: 18px;
 }
-input.togglicon:checked ~ i.close-checked::before {
+.togglicon input:checked ~ i.close-checked::before {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
 }
-input.togglicon:checked ~ i.close-checked::after {
+.togglicon input:checked ~ i.close-checked::after {
   -webkit-transform: rotate(0);
           transform: rotate(0);
 }
-input.togglicon:checked ~ i.asterisk-checked {
-  background-color: #65737e !important;
+.togglicon input:checked ~ i.asterisk-checked {
   -webkit-transform: rotate(0);
           transform: rotate(0);
 }
-input.togglicon:checked ~ i.asterisk-checked::before, input.togglicon:checked ~ i.asterisk-checked::after {
-  height: 32px;
+.togglicon input:checked ~ i.asterisk-checked::before, .togglicon input:checked ~ i.asterisk-checked::after {
+  height: 18px;
 }
-input.togglicon:checked ~ i.asterisk-checked::before {
+.togglicon input:checked ~ i.asterisk-checked::before {
   -webkit-transform: rotate(60deg);
           transform: rotate(60deg);
 }
-input.togglicon:checked ~ i.asterisk-checked::after {
+.togglicon input:checked ~ i.asterisk-checked::after {
   -webkit-transform: rotate(-60deg);
           transform: rotate(-60deg);
 }
-input.togglicon:checked ~ i.check-checked {
-  background-color: #65737e !important;
-  -webkit-transform: translate(9.89947px, 0) rotate(45deg);
-          transform: translate(9.89947px, 0) rotate(45deg);
+.togglicon input:checked ~ i.check-checked {
+  -webkit-transform: translate(5.3033px, 0) rotate(225deg);
+          transform: translate(5.3033px, 0) rotate(225deg);
 }
-input.togglicon:checked ~ i.check-checked::before {
-  height: 32px;
-  -webkit-transform: translate(0, 0) rotate(0);
-          transform: translate(0, 0) rotate(0);
-}
-input.togglicon:checked ~ i.check-checked::after {
+.togglicon input:checked ~ i.check-checked::before {
   height: 18px;
-  -webkit-transform: translate(-7px, 20.99996px) rotate(90deg);
-          transform: translate(-7px, 20.99996px) rotate(90deg);
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
-input.togglicon:checked ~ i.bars-checked {
-  background-color: #65737e !important;
-  /* margin-right: px($stroke-width*1.5 - $rotated-rect-diff); */
-  margin-top: 29px;
+.togglicon input:checked ~ i.check-checked::after {
+  height: 10.5px;
+  -webkit-transform: translate(3.75px, -3.75px) rotate(-90deg);
+          transform: translate(3.75px, -3.75px) rotate(-90deg);
+}
+.togglicon input:checked ~ i.menu-checked {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
 }
-input.togglicon:checked ~ i.bars-checked::before, input.togglicon:checked ~ i.bars-checked::after {
-  height: 32px;
-}
-input.togglicon:checked ~ i.bars-checked::before {
-  -webkit-transform: translateX(7px);
-          transform: translateX(7px);
-}
-input.togglicon:checked ~ i.bars-checked::after {
-  -webkit-transform: translateX(-7px);
-          transform: translateX(-7px);
-}
-input.togglicon ~ i.arrow-up::before, input.togglicon ~ i.arrow-up::after {
+.togglicon input:checked ~ i.menu-checked::before, .togglicon input:checked ~ i.menu-checked::after {
   height: 18px;
 }
-input.togglicon ~ i.arrow-up {
-  background-color: #65737e !important;
+.togglicon input:checked ~ i.menu-checked::before {
+  -webkit-transform: translateX(6px);
+          transform: translateX(6px);
+}
+.togglicon input:checked ~ i.menu-checked::after {
+  -webkit-transform: translateX(-6px);
+          transform: translateX(-6px);
+}
+.togglicon input ~ i.arrow-up::before, .togglicon input ~ i.arrow-up::after {
+  height: 10.5px;
+}
+.togglicon input ~ i.arrow-up {
   -webkit-transform: rotate(0);
           transform: rotate(0);
 }
-input.togglicon ~ i.arrow-up::before {
-  -webkit-transform: translate(-4.94976px, -3.6px) rotate(45deg);
-          transform: translate(-4.94976px, -3.6px) rotate(45deg);
+.togglicon input ~ i.arrow-up::before {
+  -webkit-transform: translate(-2.65165px, -2.1px) rotate(45deg);
+          transform: translate(-2.65165px, -2.1px) rotate(45deg);
 }
-input.togglicon ~ i.arrow-up::after {
-  -webkit-transform: translate(4.94976px, -3.6px) rotate(-45deg);
-          transform: translate(4.94976px, -3.6px) rotate(-45deg);
+.togglicon input ~ i.arrow-up::after {
+  -webkit-transform: translate(2.65165px, -2.1px) rotate(-45deg);
+          transform: translate(2.65165px, -2.1px) rotate(-45deg);
 }
-input.togglicon ~ i.chevron-up::before, input.togglicon ~ i.chevron-up::after {
-  height: 32px;
+.togglicon input ~ i.chevron-up::before, .togglicon input ~ i.chevron-up::after {
+  height: 18px;
 }
-input.togglicon ~ i.chevron-up::after {
+.togglicon input ~ i.chevron-up::after {
   -webkit-transform: translate(0, 0) rotate(0);
           transform: translate(0, 0) rotate(0);
 }
-input.togglicon ~ i.chevron-up {
-  background-color: #65737e !important;
-  -webkit-transform: translate(-9.89947px, 0) rotate(45deg);
-          transform: translate(-9.89947px, 0) rotate(45deg);
+.togglicon input ~ i.chevron-up {
+  -webkit-transform: translate(-5.3033px, 0) rotate(45deg);
+          transform: translate(-5.3033px, 0) rotate(45deg);
 }
-input.togglicon ~ i.chevron-up::before {
-  -webkit-transform: translate(14px, -14px) rotate(90deg);
-          transform: translate(14px, -14px) rotate(90deg);
+.togglicon input ~ i.chevron-up::before {
+  -webkit-transform: translate(7.5px, -7.5px) rotate(90deg);
+          transform: translate(7.5px, -7.5px) rotate(90deg);
 }
-input.togglicon ~ i.arrow-down::before, input.togglicon ~ i.arrow-down::after {
-  height: 18px;
+.togglicon input ~ i.arrow-down::before, .togglicon input ~ i.arrow-down::after {
+  height: 10.5px;
 }
-input.togglicon ~ i.arrow-down {
-  background-color: #65737e !important;
+.togglicon input ~ i.arrow-down {
   -webkit-transform: rotate(0);
           transform: rotate(0);
 }
-input.togglicon ~ i.arrow-down::before {
-  -webkit-transform: translate(-4.94976px, 17.6px) rotate(-45deg);
-          transform: translate(-4.94976px, 17.6px) rotate(-45deg);
+.togglicon input ~ i.arrow-down::before {
+  -webkit-transform: translate(-2.65165px, 9.6px) rotate(-45deg);
+          transform: translate(-2.65165px, 9.6px) rotate(-45deg);
 }
-input.togglicon ~ i.arrow-down::after {
-  -webkit-transform: translate(4.94976px, 17.6px) rotate(45deg);
-          transform: translate(4.94976px, 17.6px) rotate(45deg);
+.togglicon input ~ i.arrow-down::after {
+  -webkit-transform: translate(2.65165px, 9.6px) rotate(45deg);
+          transform: translate(2.65165px, 9.6px) rotate(45deg);
 }
-input.togglicon ~ i.chevron-down::before, input.togglicon ~ i.chevron-down::after {
-  height: 32px;
+.togglicon input ~ i.chevron-down::before, .togglicon input ~ i.chevron-down::after {
+  height: 18px;
 }
-input.togglicon ~ i.chevron-down::after {
+.togglicon input ~ i.chevron-down::after {
   -webkit-transform: translate(0, 0) rotate(0);
           transform: translate(0, 0) rotate(0);
 }
-input.togglicon ~ i.chevron-down {
-  background-color: #65737e !important;
-  -webkit-transform: translate(9.89947px, 0) rotate(45deg);
-          transform: translate(9.89947px, 0) rotate(45deg);
+.togglicon input ~ i.chevron-down {
+  -webkit-transform: translate(5.3033px, 0) rotate(45deg);
+          transform: translate(5.3033px, 0) rotate(45deg);
 }
-input.togglicon ~ i.chevron-down::before {
-  -webkit-transform: translate(-14px, 14px) rotate(90deg);
-          transform: translate(-14px, 14px) rotate(90deg);
+.togglicon input ~ i.chevron-down::before {
+  -webkit-transform: translate(-7.5px, 7.5px) rotate(90deg);
+          transform: translate(-7.5px, 7.5px) rotate(90deg);
 }
-input.togglicon ~ i.arrow-left::before, input.togglicon ~ i.arrow-left::after {
-  height: 18px;
+.togglicon input ~ i.arrow-left::before, .togglicon input ~ i.arrow-left::after {
+  height: 10.5px;
 }
-input.togglicon ~ i.arrow-left {
-  background-color: #65737e !important;
+.togglicon input ~ i.arrow-left {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
 }
-input.togglicon ~ i.arrow-left::before {
-  -webkit-transform: translate(-4.94976px, 17.6px) rotate(-45deg);
-          transform: translate(-4.94976px, 17.6px) rotate(-45deg);
+.togglicon input ~ i.arrow-left::before {
+  -webkit-transform: translate(-2.65165px, 9.6px) rotate(-45deg);
+          transform: translate(-2.65165px, 9.6px) rotate(-45deg);
 }
-input.togglicon ~ i.arrow-left::after {
-  -webkit-transform: translate(4.94976px, 17.6px) rotate(45deg);
-          transform: translate(4.94976px, 17.6px) rotate(45deg);
+.togglicon input ~ i.arrow-left::after {
+  -webkit-transform: translate(2.65165px, 9.6px) rotate(45deg);
+          transform: translate(2.65165px, 9.6px) rotate(45deg);
 }
-input.togglicon ~ i.chevron-left::before, input.togglicon ~ i.chevron-left::after {
-  height: 32px;
+.togglicon input ~ i.chevron-left::before, .togglicon input ~ i.chevron-left::after {
+  height: 18px;
 }
-input.togglicon ~ i.chevron-left::after {
+.togglicon input ~ i.chevron-left::after {
   -webkit-transform: translate(0, 0) rotate(0);
           transform: translate(0, 0) rotate(0);
 }
-input.togglicon ~ i.chevron-left {
-  background-color: #65737e !important;
-  -webkit-transform: translate(0, -9.89947px) rotate(45deg);
-          transform: translate(0, -9.89947px) rotate(45deg);
+.togglicon input ~ i.chevron-left {
+  -webkit-transform: translate(0, -5.3033px) rotate(45deg);
+          transform: translate(0, -5.3033px) rotate(45deg);
 }
-input.togglicon ~ i.chevron-left::before {
-  -webkit-transform: translate(14px, 14px) rotate(90deg);
-          transform: translate(14px, 14px) rotate(90deg);
+.togglicon input ~ i.chevron-left::before {
+  -webkit-transform: translate(7.5px, 7.5px) rotate(90deg);
+          transform: translate(7.5px, 7.5px) rotate(90deg);
 }
-input.togglicon ~ i.arrow-right::before, input.togglicon ~ i.arrow-right::after {
-  height: 18px;
+.togglicon input ~ i.arrow-right::before, .togglicon input ~ i.arrow-right::after {
+  height: 10.5px;
 }
-input.togglicon ~ i.arrow-right {
-  background-color: #65737e !important;
+.togglicon input ~ i.arrow-right {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
 }
-input.togglicon ~ i.arrow-right::before {
-  -webkit-transform: translate(-4.94976px, -3.6px) rotate(45deg);
-          transform: translate(-4.94976px, -3.6px) rotate(45deg);
+.togglicon input ~ i.arrow-right::before {
+  -webkit-transform: translate(-2.65165px, -2.1px) rotate(45deg);
+          transform: translate(-2.65165px, -2.1px) rotate(45deg);
 }
-input.togglicon ~ i.arrow-right::after {
-  -webkit-transform: translate(4.94976px, -3.6px) rotate(-45deg);
-          transform: translate(4.94976px, -3.6px) rotate(-45deg);
+.togglicon input ~ i.arrow-right::after {
+  -webkit-transform: translate(2.65165px, -2.1px) rotate(-45deg);
+          transform: translate(2.65165px, -2.1px) rotate(-45deg);
 }
-input.togglicon ~ i.chevron-right::before, input.togglicon ~ i.chevron-right::after {
-  height: 32px;
+.togglicon input ~ i.chevron-right::before, .togglicon input ~ i.chevron-right::after {
+  height: 18px;
 }
-input.togglicon ~ i.chevron-right::after {
+.togglicon input ~ i.chevron-right::after {
   -webkit-transform: translate(0, 0) rotate(0);
           transform: translate(0, 0) rotate(0);
 }
-input.togglicon ~ i.chevron-right {
-  background-color: #65737e !important;
-  -webkit-transform: translate(0, 9.89947px) rotate(45deg);
-          transform: translate(0, 9.89947px) rotate(45deg);
+.togglicon input ~ i.chevron-right {
+  -webkit-transform: translate(0, 5.3033px) rotate(45deg);
+          transform: translate(0, 5.3033px) rotate(45deg);
 }
-input.togglicon ~ i.chevron-right::before {
-  -webkit-transform: translate(-14px, -14px) rotate(90deg);
-          transform: translate(-14px, -14px) rotate(90deg);
+.togglicon input ~ i.chevron-right::before {
+  -webkit-transform: translate(-7.5px, -7.5px) rotate(90deg);
+          transform: translate(-7.5px, -7.5px) rotate(90deg);
 }
-input.togglicon ~ i.plus {
-  background-color: #65737e !important;
-  -webkit-transform: rotate(0);
-          transform: rotate(0);
-}
-input.togglicon ~ i.plus::before, input.togglicon ~ i.plus::after {
-  height: 32px;
-}
-input.togglicon ~ i.plus::before {
-  -webkit-transform: rotate(0);
-          transform: rotate(0);
-}
-input.togglicon ~ i.plus::after {
+.togglicon input ~ i.minus {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
 }
-input.togglicon ~ i.minus {
-  background-color: #65737e !important;
+.togglicon input ~ i.minus::before, .togglicon input ~ i.minus::after {
+  height: 18px;
+}
+.togglicon input ~ i.minus::before {
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+}
+.togglicon input ~ i.minus::after {
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+}
+.togglicon input ~ i.bar {
+  -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+}
+.togglicon input ~ i.bar::before, .togglicon input ~ i.bar::after {
+  height: 18px;
+}
+.togglicon input ~ i.bar::before {
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+}
+.togglicon input ~ i.bar::after {
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+}
+.togglicon input ~ i.plus {
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+}
+.togglicon input ~ i.plus::before, .togglicon input ~ i.plus::after {
+  height: 18px;
+}
+.togglicon input ~ i.plus::before {
+  -webkit-transform: rotate(0);
+          transform: rotate(0);
+}
+.togglicon input ~ i.plus::after {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
 }
-input.togglicon ~ i.minus::before, input.togglicon ~ i.minus::after {
-  height: 32px;
-}
-input.togglicon ~ i.minus::before {
-  -webkit-transform: rotate(0);
-          transform: rotate(0);
-}
-input.togglicon ~ i.minus::after {
-  -webkit-transform: rotate(0);
-          transform: rotate(0);
-}
-input.togglicon ~ i.close {
-  background-color: #65737e !important;
+.togglicon input ~ i.close {
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
 }
-input.togglicon ~ i.close::before, input.togglicon ~ i.close::after {
-  height: 32px;
+.togglicon input ~ i.close::before, .togglicon input ~ i.close::after {
+  height: 18px;
 }
-input.togglicon ~ i.close::before {
+.togglicon input ~ i.close::before {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
 }
-input.togglicon ~ i.close::after {
+.togglicon input ~ i.close::after {
   -webkit-transform: rotate(0);
           transform: rotate(0);
 }
-input.togglicon ~ i.asterisk {
-  background-color: #65737e !important;
+.togglicon input ~ i.asterisk {
   -webkit-transform: rotate(0);
           transform: rotate(0);
 }
-input.togglicon ~ i.asterisk::before, input.togglicon ~ i.asterisk::after {
-  height: 32px;
+.togglicon input ~ i.asterisk::before, .togglicon input ~ i.asterisk::after {
+  height: 18px;
 }
-input.togglicon ~ i.asterisk::before {
+.togglicon input ~ i.asterisk::before {
   -webkit-transform: rotate(60deg);
           transform: rotate(60deg);
 }
-input.togglicon ~ i.asterisk::after {
+.togglicon input ~ i.asterisk::after {
   -webkit-transform: rotate(-60deg);
           transform: rotate(-60deg);
 }
-input.togglicon ~ i.check {
-  background-color: #65737e !important;
-  -webkit-transform: translate(9.89947px, 0) rotate(45deg);
-          transform: translate(9.89947px, 0) rotate(45deg);
+.togglicon input ~ i.check {
+  -webkit-transform: translate(5.3033px, 0) rotate(225deg);
+          transform: translate(5.3033px, 0) rotate(225deg);
 }
-input.togglicon ~ i.check::before {
-  height: 32px;
-  -webkit-transform: translate(0, 0) rotate(0);
-          transform: translate(0, 0) rotate(0);
-}
-input.togglicon ~ i.check::after {
+.togglicon input ~ i.check::before {
   height: 18px;
-  -webkit-transform: translate(-7px, 20.99996px) rotate(90deg);
-          transform: translate(-7px, 20.99996px) rotate(90deg);
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
-input.togglicon ~ i.bars {
-  background-color: #65737e !important;
-  /* margin-right: px($stroke-width*1.5 - $rotated-rect-diff); */
-  margin-top: 29px;
+.togglicon input ~ i.check::after {
+  height: 10.5px;
+  -webkit-transform: translate(3.75px, -3.75px) rotate(-90deg);
+          transform: translate(3.75px, -3.75px) rotate(-90deg);
+}
+.togglicon input ~ i.menu {
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
 }
-input.togglicon ~ i.bars::before, input.togglicon ~ i.bars::after {
-  height: 32px;
+.togglicon input ~ i.menu::before, .togglicon input ~ i.menu::after {
+  height: 18px;
 }
-input.togglicon ~ i.bars::before {
-  -webkit-transform: translateX(7px);
-          transform: translateX(7px);
+.togglicon input ~ i.menu::before {
+  -webkit-transform: translateX(6px);
+          transform: translateX(6px);
 }
-input.togglicon ~ i.bars::after {
-  -webkit-transform: translateX(-7px);
-          transform: translateX(-7px);
+.togglicon input ~ i.menu::after {
+  -webkit-transform: translateX(-6px);
+          transform: translateX(-6px);
 }
