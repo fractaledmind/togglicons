@@ -1,2 +1,2 @@
-![logo](./togglicons.svg)
+![logo](./logo.svg)
 Pure CSS animated icon set
