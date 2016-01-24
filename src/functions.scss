@@ -17,9 +17,6 @@
   @return convert-unit($int, "deg");
 }
 
-/// Compute side length of square that bounds a rectangle rotated 45 degrees
-@function rotated-length($height, $width) {
-  @return ($width / $_sqrt-2) + ($height / $_sqrt-2);
 
 // MATH
 // https://unindented.org/articles/trigonometry-in-sass/
@@ -77,10 +74,128 @@
   }
   @return $cos;
 }
+
+/// Calculate length of the width-associated section
+/// of horizontal X side of bounded box formed when
+///  a rectangle (H, W) is rotated.
+/// +________________+
+/// |          .-'\  | wy
+/// |       .-'    \ |
+/// |    .-'    .-'  |
+/// | .-'    .-'     |
+/// |\    .-'        | hy
+/// | \.-'           |
+/// +----------------+
+///  ^
+///  wx        hx
+@function calc-width-rotated-x($width, $rotation) {
+  $cos: cos(deg($rotation));
+  @return $cos * $width;
 }
 
-/// Compute difference between the top of the rectangle standing upright
-/// and top of bounded square formed when that rectangle is rotated 45 degrees
+/// Calculate length of the height-associated section
+/// of horizontal X side of bounded box formed when
+///  a rectangle (H, W) is rotated.
+/// +________________+
+/// |          .-'\  | wy
+/// |       .-'    \ |
+/// |    .-'    .-'  |
+/// | .-'    .-'     |
+/// |\    .-'        | hy
+/// | \.-'           |
+/// +----------------+
+///            ^
+///  wx        hx
+@function calc-height-rotated-x($height, $rotation) {
+  $sin: sin(deg($rotation));
+  @return $sin * $height;
+}
+
+/// Calculate length of the width-associated section
+/// of vertical Y side of bounded box formed when
+///  a rectangle (H, W) is rotated.
+/// +________________+
+/// |          .-'\  | < wy
+/// |       .-'    \ |
+/// |    .-'    .-'  |
+/// | .-'    .-'     |
+/// |\    .-'        |   hy
+/// | \.-'           |
+/// +----------------+
+///  wx        hx
+@function calc-width-rotated-y($width, $rotation) {
+  $sin: sin(deg($rotation));
+  @return $sin * $width;
+}
+
+/// Calculate length of the height-associated section
+/// of vertical Y side of bounded box formed when
+///  a rectangle (H, W) is rotated.
+/// +________________+
+/// |          .-'\  |   wy
+/// |       .-'    \ |
+/// |    .-'    .-'  |
+/// | .-'    .-'     |
+/// |\    .-'        | < hy
+/// | \.-'           |
+/// +----------------+
+///  wx        hx
+@function calc-height-rotated-y($height, $rotation) {
+  $cos: cos(deg($rotation));
+  @return $cos * $height;
+}
+
+/// Calculate length of horizontal X side of bounded box
+/// formed when a rectangle (H, W) is rotated.
+/// +________________+
+/// |          .-'\  | wy
+/// |       .-'    \ |
+/// |    .-'    .-'  |
+/// | .-'    .-'     |
+/// |\    .-'        | hy
+/// | \.-'           |
+/// +----------------+
+///  ^          ^
+///  wx    +    hx
+@function calc-rotated-bbox-x($height, $width, $rotation) {
+  @return (
+    calc-width-rotated-x($width, $rotation)
+    + calc-height-rotated-x($height, $rotation)
+  );
+}
+
+/// Calculate length of vertical Y side of bounded box
+/// formed when a rectangle (H, W) is rotated.
+/// +________________+
+/// |          .-'\  | < wy
+/// |       .-'    \ |
+/// |    .-'    .-'  | +
+/// | .-'    .-'     |
+/// |\    .-'        | < hy
+/// | \.-'           |
+/// +----------------+
+///  wx        hx
+@function calc-rotated-bbox-y($height, $width, $rotation) {
+  @return (
+    calc-width-rotated-y($width, $rotation)
+    + calc-height-rotated-y($height, $rotation)
+  );
+}
+
+/// Calculate difference between top of a rectangle standing upright
+/// and top of bounded box formed when that rectangle is rotated.
+///        ___
+///       |   | < diff
+/// +_____|___|______+
+/// |          .-'\  |
+/// |       .-'    \ |
+/// |    .-'    .-'  |
+/// | .-'    .-'     |
+/// |\    .-'        |
+/// | \.-'           |
+/// +-----|---|------+
+///       |   |
+///        ---
 @function rotated-height-diff($height, $width) {
   @return ($height - rotated-length($height, $width)) / 2;
 }
