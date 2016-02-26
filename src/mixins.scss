@@ -8,6 +8,25 @@
 /// SIMPLE ICONS
 ///---------------
 
+// ('minus', 'bar', 'plus', 'close', 'asterisk')
+@mixin simple($icon, $height) {
+  @if ($icon == 'minus') {
+    @include minus($height);
+  }
+  @else if ($icon == 'bar') {
+    @include bar($height);
+  }
+  @else if ($icon == 'plus') {
+    @include plus($height);
+  }
+  @else if ($icon == 'close') {
+    @include close($height);
+  }
+  @else if ($icon == 'asterisk') {
+    @include asterisk($height);
+  }
+}
+
 // 1 stroke icon
 @mixin minus($stroke-height) {
   @include show-center-stroke {
@@ -45,7 +64,7 @@
 // 2 stroke icon
 @mixin close($stroke-height) {
   @include show-center-stroke {
-    transform: rotate($_rotate-delta);
+    transform: rotate(deg(45));
   }
   &::before,
   &::after {
@@ -97,6 +116,16 @@
 /// COMPLEX ICONS
 ///---------------
 
+// ('check', 'menu')
+@mixin complex($icon, $height, $width) {
+  @if ($icon == 'check') {
+    @include check($height, $width);
+  }
+  @else if ($icon == 'menu') {
+    @include menu($height, $width);
+  }
+}
+
 // 2 stroke icon
 @mixin check($stroke-height, $stroke-width) {
   $mini-height: (
@@ -138,6 +167,23 @@
   }
   &::after {
     transform: translateX(px(-$stroke-width*2));
+  }
+}
+
+///---------------
+/// DIRECTIONAL ICONS
+///---------------
+
+// ('arrow-up', 'arrow-down', 'arrow-left', 'arrow-right',
+//  'chevron-up', 'chevron-down', 'chevron-left', 'chevron-right')
+@mixin directional($icon, $height, $width) {
+  $name: nth(explode($icon, '-'), 1);
+  $dir: nth(explode($icon, '-'), -1);
+  @if ($name == 'arrow') {
+    @include arrow($dir, $height, $width);
+  }
+  @else if ($name == 'chevron') {
+    @include chevron($dir, $height, $width);
   }
 }
 
