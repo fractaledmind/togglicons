@@ -1,4 +1,7 @@
-@mixin togglicon ($width:       $stroke-width,
+@mixin togglicon ($icons:       ('minus', 'bar', 'plus', 'close', 'asterisk', 'check', 'menu',
+                                 'arrow-up', 'arrow-down', 'arrow-left', 'arrow-right',
+                                 'chevron-up', 'chevron-down', 'chevron-left', 'chevron-right'),
+                  $width:       $stroke-width,
                   $multiplier:  $height-multiplier,
                   $radius:      $stroke-radius,
                   $color:       $stroke-color,
@@ -44,31 +47,35 @@
         }
       }
 
+      // checked-state icons
       &:checked {
-        @each $dir in $DIRS {
-          & ~ i.arrow-#{$dir}-checked   { @include arrow   ($dir, $height, $width); }
-          & ~ i.chevron-#{$dir}-checked { @include chevron ($dir, $height, $width); }
+        @each $icon in $icons {
+          @if index(('minus', 'bar', 'plus', 'close', 'asterisk'), $icon) {
+            & ~ i.#{$icon}-checked  { @include simple($icon, $height); }
+          }
+          @else if index(('check', 'menu'), $icon) {
+            & ~ i.#{$icon}-checked  { @include complex($icon, $height, $width); }
+          }
+          @else if index(('arrow-up', 'arrow-down', 'arrow-left', 'arrow-right',
+                          'chevron-up', 'chevron-down', 'chevron-left', 'chevron-right'), $icon) {
+            & ~ i.#{$icon}-checked  { @include directional($icon, $height, $width); }
+          }
         }
-        & ~ i.minus-checked     { @include minus    ($height); }
-        & ~ i.bar-checked       { @include bar      ($height); }
-        & ~ i.plus-checked      { @include plus     ($height); }
-        & ~ i.close-checked     { @include close    ($height); }
-        & ~ i.asterisk-checked  { @include asterisk ($height); }
-        & ~ i.check-checked     { @include check    ($height, $width); }
-        & ~ i.menu-checked      { @include menu     ($height, $width); }
       }
 
-      @each $dir in $DIRS {
-        & ~ i.arrow-#{$dir}   { @include arrow   ($dir, $height, $width); }
-        & ~ i.chevron-#{$dir} { @include chevron ($dir, $height, $width); }
+      // unchecked-state icons
+      @each $icon in $icons {
+        @if index(('minus', 'bar', 'plus', 'close', 'asterisk'), $icon) {
+          & ~ i.#{$icon}  { @include simple($icon, $height); }
+        }
+        @else if index(('check', 'menu'), $icon) {
+          & ~ i.#{$icon}  { @include complex($icon, $height, $width); }
+        }
+        @else if index(('arrow-up', 'arrow-down', 'arrow-left', 'arrow-right',
+                        'chevron-up', 'chevron-down', 'chevron-left', 'chevron-right'), $icon) {
+          & ~ i.#{$icon}  { @include directional($icon, $height, $width); }
+        }
       }
-      & ~ i.minus     { @include minus    ($height); }
-      & ~ i.bar       { @include bar      ($height); }
-      & ~ i.plus      { @include plus     ($height); }
-      & ~ i.close     { @include close    ($height); }
-      & ~ i.asterisk  { @include asterisk ($height); }
-      & ~ i.check     { @include check    ($height, $width); }
-      & ~ i.menu      { @include menu     ($height, $width); }
     }
   }
 }
