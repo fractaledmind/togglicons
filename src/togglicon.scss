@@ -51,14 +51,14 @@
       &:checked {
         @each $icon in $icons {
           @if index(('minus', 'bar', 'plus', 'close', 'asterisk'), $icon) {
-            & ~ i.#{$icon}-checked  { @include simple($icon, $height); }
+            & ~ i.tg-#{$icon}-checked  { @include simple($icon, $height); }
           }
           @else if index(('check', 'menu'), $icon) {
-            & ~ i.#{$icon}-checked  { @include complex($icon, $height, $width); }
+            & ~ i.tg-#{$icon}-checked  { @include complex($icon, $height, $width); }
           }
           @else if index(('arrow-up', 'arrow-down', 'arrow-left', 'arrow-right',
                           'chevron-up', 'chevron-down', 'chevron-left', 'chevron-right'), $icon) {
-            & ~ i.#{$icon}-checked  { @include directional($icon, $height, $width); }
+            & ~ i.tg-#{$icon}-checked  { @include directional($icon, $height, $width); }
           }
         }
       }
@@ -66,14 +66,14 @@
       // unchecked-state icons
       @each $icon in $icons {
         @if index(('minus', 'bar', 'plus', 'close', 'asterisk'), $icon) {
-          & ~ i.#{$icon}  { @include simple($icon, $height); }
+          & ~ i.tg-#{$icon}  { @include simple($icon, $height); }
         }
         @else if index(('check', 'menu'), $icon) {
-          & ~ i.#{$icon}  { @include complex($icon, $height, $width); }
+          & ~ i.tg-#{$icon}  { @include complex($icon, $height, $width); }
         }
         @else if index(('arrow-up', 'arrow-down', 'arrow-left', 'arrow-right',
                         'chevron-up', 'chevron-down', 'chevron-left', 'chevron-right'), $icon) {
-          & ~ i.#{$icon}  { @include directional($icon, $height, $width); }
+          & ~ i.tg-#{$icon}  { @include directional($icon, $height, $width); }
         }
       }
     }
