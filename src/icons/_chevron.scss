@@ -1,0 +1,66 @@
+// 2 stroke icon
+@mixin chevron($dir, $stroke-height, $stroke-width) {
+  $x-delta: (
+    ($stroke-height - $stroke-width) / 2
+  );
+  $x-mid-delta: (
+    (
+      calc-box-x($stroke-height, $stroke-width, 45)
+      / 2
+    )
+    - calc-box-x-left($stroke-width, 45)
+  );
+
+  &::before,
+  &::after {
+    height: px($stroke-height);
+  }
+  &::after {
+    transform: translate(0, 0) rotate(0);
+  }
+
+  @if $dir=='down' { @include down-chevron($x-delta, $x-mid-delta); }
+  @else if $dir=='up' { @include up-chevron($x-delta, $x-mid-delta); }
+  @else if $dir=='left' { @include left-chevron($x-delta, $x-mid-delta); }
+  @else if $dir=='right' { @include right-chevron($x-delta, $x-mid-delta); }
+}
+
+// v
+@mixin down-chevron($x-delta, $x-mid-delta) {
+  @include show-center-stroke {
+    transform: translate(px($x-mid-delta), 0) rotate(deg(45));
+  }
+  &::before {
+    transform: translate(px(-$x-delta), px($x-delta)) rotate(deg(90));
+  }
+}
+
+// ^
+@mixin up-chevron($x-delta, $x-mid-delta) {
+  @include show-center-stroke {
+    transform: translate(px(-$x-mid-delta), 0) rotate(deg(45));
+  }
+  &::before {
+    transform: translate(px($x-delta), px(-$x-delta)) rotate(deg(90));
+  }
+}
+
+// <
+@mixin left-chevron($x-delta, $x-mid-delta) {
+  @include show-center-stroke {
+    transform: translate(0, px(-$x-mid-delta)) rotate(deg(45));
+  }
+  &::before {
+    transform: translate(px($x-delta), px($x-delta)) rotate(deg(90));
+  }
+}
+
+// >
+@mixin right-chevron($x-delta, $x-mid-delta) {
+  @include show-center-stroke {
+    transform: translate(0, px($x-mid-delta)) rotate(deg(45));
+  }
+  &::before {
+    transform: translate(px(-$x-delta), px(-$x-delta)) rotate(deg(90));
+  }
+}

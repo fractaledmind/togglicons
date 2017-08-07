@@ -1,0 +1,32 @@
+// 2 stroke icon
+@mixin check($stroke-height, $stroke-width) {
+  $mini-height: (
+    (
+      ($stroke-height - $stroke-width) / 2
+    )
+    + $stroke-width
+  );
+  $x-mid-delta: (
+    (
+      (
+        calc-box-x($stroke-height, $stroke-width, 45) / 2
+      )
+      - calc-box-x-left($stroke-width, 45)
+    ) / 2
+  );
+  $x-delta: (
+    ($mini-height - $stroke-width) / 2
+  );
+
+  @include show-center-stroke {
+    transform: translate(px($x-mid-delta), 0) rotate(deg(225));
+  }
+  &::before {
+    height: px($stroke-height);
+    transform: rotate(deg(180));
+  }
+  &::after {
+    height: px($mini-height);
+    transform: translate(px($x-delta), px(-$x-delta)) rotate(deg(-90));
+  }
+}

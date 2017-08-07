@@ -1,0 +1,32 @@
+@mixin icon($icon, $height, $width) {
+  $name: nth(explode($icon, '-'), 1);
+  $dir: nth(explode($icon, '-'), -1);
+
+  @if ($icon == 'minus') {
+    @include minus($height);
+  }
+  @else if ($icon == 'bar') {
+    @include bar($height);
+  }
+  @else if ($icon == 'plus') {
+    @include plus($height);
+  }
+  @else if ($icon == 'close') {
+    @include close($height);
+  }
+  @else if ($icon == 'asterisk') {
+    @include asterisk($height);
+  }
+  @else if ($icon == 'check') {
+    @include check($height, $width);
+  }
+  @else if ($icon == 'menu') {
+    @include menu($height, $width);
+  }
+  @else if ($name == 'arrow') {
+    @include arrow($dir, $height, $width);
+  }
+  @else if ($name == 'chevron') {
+    @include chevron($dir, $height, $width);
+  }
+}

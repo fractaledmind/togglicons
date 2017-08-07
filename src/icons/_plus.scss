@@ -1,0 +1,16 @@
+// 2 stroke icon
+@mixin plus($stroke-height) {
+  @include show-center-stroke {
+    transform: rotate(0);
+  }
+  &::before,
+  &::after {
+    height: px($stroke-height);
+  }
+  &::before {
+    transform: rotate(0);
+  }
+  &::after {
+    transform: rotate(deg(90));
+  }
+}

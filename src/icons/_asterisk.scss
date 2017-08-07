@@ -1,0 +1,16 @@
+// 3 stroke icon
+@mixin asterisk($stroke-height) {
+  @include show-center-stroke {
+    transform: rotate(0);
+  }
+  &::before,
+  &::after {
+    height: px($stroke-height);
+  }
+  &::before {
+    transform: rotate(deg(60));
+  }
+  &::after {
+    transform: rotate(deg(-60));
+  }
+}

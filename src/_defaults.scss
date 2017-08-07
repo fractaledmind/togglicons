@@ -1,0 +1,27 @@
+/* DEFAULTS */
+$stroke-width:          4;
+$height-multiplier:     7;
+$stroke-radius:         4;
+$stroke-color:          #343d46;
+$transition-duration:   0.5;
+// elastic
+$transition-function:   cubic-bezier(0.68, -0.55, 0.265, 1.55);
+// swoop
+// $transition-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+$icon-set: (
+  'minus',
+  'bar',
+  'plus',
+  'close',
+  'asterisk',
+  'check',
+  'menu',
+  'arrow-up',
+  'arrow-down',
+  'arrow-left',
+  'arrow-right',
+  'chevron-up',
+  'chevron-down',
+  'chevron-left',
+  'chevron-right'
+);

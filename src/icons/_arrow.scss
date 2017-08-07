@@ -1,0 +1,87 @@
+// 3 stroke icon
+@mixin arrow($dir, $stroke-height, $stroke-width) {
+  $mini-height: (
+    (
+      ($stroke-height - $stroke-width) / 2
+    )
+    + $stroke-width
+  );
+  $mini-square:     calc-box-x($mini-height, $stroke-width, 45);
+  $stroke-square:   calc-box-x($stroke-height, $stroke-width, 45);
+  $x-delta: (
+    ($stroke-square - $mini-square) / 2
+  );
+  $y-delta: (
+    $mini-height / 5
+  );
+
+  &::before,
+  &::after {
+    height: px($mini-height);
+  }
+
+  @if $dir=='down' {
+    $y-delta: ($y-delta + ($stroke-height - $mini-height));
+    @include down-arrow($x-delta, $y-delta);
+  }
+  @else if $dir=='up' { @include up-arrow($x-delta, $y-delta); }
+  @else if $dir=='left' {
+    $y-delta: ($y-delta + ($stroke-height - $mini-height));
+    @include left-arrow($x-delta, $y-delta);
+  }
+  @else if $dir=='right' { @include right-arrow($x-delta, $y-delta); }
+}
+
+// |
+// v
+@mixin down-arrow($x-delta, $y-delta) {
+  @include show-center-stroke {
+    transform: rotate(0);
+  }
+  &::before {
+    transform: translate(px(-$x-delta), px($y-delta)) rotate(deg(-45));
+  }
+  &::after {
+    transform: translate(px($x-delta), px($y-delta)) rotate(deg(45));
+  }
+}
+
+// ^
+// |
+@mixin up-arrow($x-delta, $y-delta) {
+  @include show-center-stroke {
+    transform: rotate(0);
+  }
+  &::before {
+    transform: translate(px(-$x-delta), px(-$y-delta)) rotate(deg(45));
+  }
+  &::after {
+    transform: translate(px($x-delta), px(-$y-delta)) rotate(deg(-45));
+  }
+}
+
+// <—
+@mixin left-arrow($x-delta, $y-delta) {
+  @include show-center-stroke {
+    transform: rotate(deg(90));
+  }
+  &::before {
+    transform: translate(px(-$x-delta), px($y-delta)) rotate(deg(-45));
+  }
+  &::after {
+    transform: translate(px($x-delta), px($y-delta)) rotate(deg(45));
+  }
+}
+
+// —>
+@mixin right-arrow($x-delta, $y-delta) {
+  @include show-center-stroke {
+    transform: rotate(deg(90));
+  }
+  &::before {
+    transform: translate(px(-$x-delta), px(-$y-delta)) rotate(deg(45));
+  }
+  &::after {
+    transform: translate(px($x-delta), px(-$y-delta)) rotate(deg(-45));
+  }
+}

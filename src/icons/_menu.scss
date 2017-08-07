@@ -1,0 +1,16 @@
+// 3 stroke icon
+@mixin menu($stroke-height, $stroke-width) {
+  @include show-center-stroke {
+    transform: rotate(deg(90));
+  }
+  &::before,
+  &::after {
+    height: px($stroke-height);
+  }
+  &::before {
+    transform: translateX(px($stroke-width*2));
+  }
+  &::after {
+    transform: translateX(px(-$stroke-width*2));
+  }
+}

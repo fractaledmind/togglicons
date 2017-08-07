@@ -1,0 +1,6 @@
+/// How to handle primary line stroke
+@mixin show-center-stroke {
+  & {
+    @content;
+  }
+}
